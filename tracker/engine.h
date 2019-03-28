@@ -7,6 +7,11 @@
 #include "smartSprite.h"
 #include "world.h"
 #include "viewport.h"
+#include "hud.h"
+
+class CollisionStrategy;
+class SmartSprite;
+class SubjectSprite;
 
 class Engine {
 public:
@@ -31,6 +36,14 @@ private:
   
   std::vector<Drawable*> dumb;
   std::vector<SmartSprite*> smart;
+  
+  int currentStrategy;
+  bool collision;
+  std::vector<CollisionStrategy*> strategies;
+  
+  const hud& h;
+  
+  bool hudState;
   
   bool makeVideo;
 

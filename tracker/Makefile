@@ -23,8 +23,10 @@ OBJS = \
 	engine.o \
 	subjectSprite.o \
 	smartSprite.o \
+	collisionStrategy.o \
 	twowaysprite.o \
 	player.o \
+	hud.o \
 	main.o
 EXEC = run
 

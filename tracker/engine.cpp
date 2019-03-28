@@ -13,6 +13,7 @@
 #include "gameData.h"
 #include "engine.h"
 #include "frameGenerator.h"
+#include "collisionStrategy.h"
 
 Engine::~Engine() { 
   for(auto& t : dumb)
@@ -23,6 +24,12 @@ Engine::~Engine() {
   {
   	delete t;
   }
+  for(auto& c : strategies)
+  {
+  	delete c;
+  }
+  
+  delete player;
   std::cout << "Terminating program" << std::endl;
 }
 
@@ -37,8 +44,17 @@ Engine::Engine() :
   player(new SubjectSprite("shark")),
   dumb(),
   smart(),
+  currentStrategy(0),
+  collision(false),
+  strategies(),
+  h(hud::getInstance()),
+  hudState(true),
   makeVideo( false )
 {
+  strategies.push_back( new RectangularCollisionStrategy );
+  strategies.push_back( new PerPixelCollisionStrategy );
+  strategies.push_back( new MidPointCollisionStrategy );
+  
   player->setScale(1.5);
   int a = Gamedata::getInstance().getXmlInt("numberOfFish1");
   int b = Gamedata::getInstance().getXmlInt("numberOfStarfish");
@@ -49,12 +65,13 @@ Engine::Engine() :
   for(int i = 0; i < a; i++)
   {
   	dumb.push_back(new Sprite("fish1"));
+  	dumb[i]->setScale(.4);
   }
   
   for(int i = 0; i < b; i++)
   {
   	dumb.push_back(new Sprite("starfish"));
-  	dumb[i]->setScale(.4);
+  	dumb[i+a]->setScale(.4);
   }
   
   Vector2f pos = player->getPosition();
@@ -80,6 +97,9 @@ void Engine::draw() const {
   mount.draw();
   
   player->draw();
+  h.draw(hudState);
+  
+  strategies[currentStrategy]->draw();
 
   for(auto& t : dumb)
   {
@@ -102,7 +122,21 @@ void Engine::draw() const {
   SDL_RenderPresent(renderer);
 }
 
+void Engine::checkForCollisions() {
+  auto it = smart.begin();
+  while ( it != smart.end() ) {
+    if ( strategies[currentStrategy]->execute(*player, **it) ) {
+      SmartSprite* doa = *it;
+      player->detach(doa);
+      delete doa;
+      it = smart.erase(it);
+    }
+    else ++it;
+  }
+}
+
 void Engine::update(Uint32 ticks) {
+  checkForCollisions();
   ocean.update();
   mount.update();
   player->update(ticks);
@@ -138,9 +172,17 @@ void Engine::play() {
           done = true;
           break;
         }
+        if ( keystate[SDL_SCANCODE_F1]){
+          if(hudState == 0) hudState = 1;
+          else
+          	hudState = 0;
+        }
         if ( keystate[SDL_SCANCODE_P] ) {
           if ( clock.isPaused() ) clock.unpause();
           else clock.pause();
+        }
+        if ( keystate[SDL_SCANCODE_M] ) {
+          currentStrategy = (1 + currentStrategy) % strategies.size();
         }
         if (keystate[SDL_SCANCODE_F4] && !makeVideo) {
           std::cout << "Initiating frame capture" << std::endl;

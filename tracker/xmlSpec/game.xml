@@ -5,9 +5,9 @@
 <title>The Tracker Framework</title>
 <maxStringSize>50</maxStringSize>
 
-<numberOfFish1>3</numberOfFish1>
-<numberOfStarfish>3</numberOfStarfish>
-<numberOfTrash>1</numberOfTrash>
+<numberOfFish1>2</numberOfFish1>
+<numberOfStarfish>2</numberOfStarfish>
+<numberOfTrash>8</numberOfTrash>
 
 
 <frameCapOn>true</frameCapOn>
@@ -43,14 +43,14 @@
   <file>fonts/arial.ttf</file>
   <size>24</size>
   <red>255</red>
-  <green>255</green>
+  <green>0</green>
   <blue>0</blue>
   <alpha>0</alpha>
 </font>
 
 <shark>
   <file>assets/sharkspriteRight.png</file>
-  <startLoc x="50" y="240"/>
+  <startLoc x="20" y="340"/>
   <frames>9</frames>
   <frameInterval>60</frameInterval>
   <speedX>300</speedX>
@@ -60,7 +60,7 @@
 
 <sharkLeft>
   <file>assets/sharksprite.png</file>
-  <startLoc x="50" y="240"/>
+  <startLoc x="20" y="340"/>
   <frames>9</frames>
   <frameInterval>60</frameInterval>
   <speedX>300</speedX>
@@ -70,7 +70,7 @@
 
 <starfish>
   <file>assets/starfish.png</file>
-  <startLoc x="550" y="630"/>
+  <startLoc x="2000" y="630"/>
   <speedX>200</speedX>
   <speedY>175</speedY>
   <transparency>true</transparency>
@@ -79,7 +79,7 @@
 
 <fish1>
   <file>assets/fish.png</file>
-  <startLoc x="255" y="400"/>
+  <startLoc x="2400" y="400"/>
   <speedX>300</speedX>
   <speedY>240</speedY>
   <transparency>true</transparency>
@@ -87,11 +87,20 @@
 
 <trash>
   <file>assets/trash1.png</file>
-  <startLoc x = "255" y = "400" />
+  <startLoc x = "1800" y = "400" />
   <speedX>199</speedX>
   <speedY>199</speedY>
   <safeDistance>150</safeDistance>
   <transparency>false</transparency>
 </trash>
+
+<hud>
+	<r>255</r>
+	<g>0</g>
+	<b>0</b>
+	<a>255</a>
+	<size>16</size>
+</hud>
+
 
 </GameData>

@@ -1,3 +1,5 @@
+#ifndef IOMOD_H
+#define IOMOD_H
 #include <iostream>
 #include <string>
 #include <SDL.h>
@@ -21,3 +23,5 @@ private:
   SDL_Color textColor;
   IoMod();
 };
+
+#endif
