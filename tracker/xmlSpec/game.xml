@@ -1,0 +1,97 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation. 
+     So make sure to include your name as part of the screenTitle -->
+<title>The Tracker Framework</title>
+<maxStringSize>50</maxStringSize>
+
+<numberOfFish1>3</numberOfFish1>
+<numberOfStarfish>3</numberOfStarfish>
+<numberOfTrash>1</numberOfTrash>
+
+
+<frameCapOn>true</frameCapOn>
+<period>17</period>
+
+<maxFrames>300</maxFrames>
+<username>dpaszek</username>
+
+<view>
+  <width>900</width>
+  <height>680</height>
+  <loc x="30" y="30"/>
+</view>
+
+<world>
+  <width>3800</width>
+  <height>1081</height>
+</world>
+
+<back>
+  <file>assets/ocean1.jpg</file>
+  <factor>3</factor>
+  <transparency>false</transparency>
+</back>
+
+<mountains>
+  <file>assets/biome.png</file>
+  <factor>1</factor>
+  <transparency>true</transparency>
+</mountains>
+
+<font name="font">
+  <file>fonts/arial.ttf</file>
+  <size>24</size>
+  <red>255</red>
+  <green>255</green>
+  <blue>0</blue>
+  <alpha>0</alpha>
+</font>
+
+<shark>
+  <file>assets/sharkspriteRight.png</file>
+  <startLoc x="50" y="240"/>
+  <frames>9</frames>
+  <frameInterval>60</frameInterval>
+  <speedX>300</speedX>
+  <speedY>500</speedY>
+  <transparency>true</transparency>
+</shark>
+
+<sharkLeft>
+  <file>assets/sharksprite.png</file>
+  <startLoc x="50" y="240"/>
+  <frames>9</frames>
+  <frameInterval>60</frameInterval>
+  <speedX>300</speedX>
+  <speedY>500</speedY>
+  <transparency>true</transparency>
+</sharkLeft>
+
+<starfish>
+  <file>assets/starfish.png</file>
+  <startLoc x="550" y="630"/>
+  <speedX>200</speedX>
+  <speedY>175</speedY>
+  <transparency>true</transparency>
+  <safeDistance>70</safeDistance>
+</starfish>
+
+<fish1>
+  <file>assets/fish.png</file>
+  <startLoc x="255" y="400"/>
+  <speedX>300</speedX>
+  <speedY>240</speedY>
+  <transparency>true</transparency>
+</fish1>
+
+<trash>
+  <file>assets/trash1.png</file>
+  <startLoc x = "255" y = "400" />
+  <speedX>199</speedX>
+  <speedY>199</speedY>
+  <safeDistance>150</safeDistance>
+  <transparency>false</transparency>
+</trash>
+
+</GameData>
