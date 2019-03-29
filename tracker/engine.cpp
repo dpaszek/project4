@@ -95,9 +95,8 @@ Engine::Engine() :
 void Engine::draw() const {
   ocean.draw();
   mount.draw();
-  
-  player->draw();
   h.draw(hudState);
+  player->draw();
   
   strategies[currentStrategy]->draw();
 
@@ -110,13 +109,6 @@ void Engine::draw() const {
   {
   	t->draw();
   }
-  
-  std::string fps;
-  std::stringstream strm;
-  
-  strm << "fps: " << clock.getFps();
-  fps = strm.str();
-  io.writeText(fps, 20, 100);
   
   viewport.draw();
   SDL_RenderPresent(renderer);
@@ -140,6 +132,7 @@ void Engine::update(Uint32 ticks) {
   ocean.update();
   mount.update();
   player->update(ticks);
+
   
   for(auto& t : dumb)
   {

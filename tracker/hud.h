@@ -3,6 +3,7 @@
 #include <SDL_image.h>
 #include <SDL.h>
 #include "ioMod.h"
+#include "clock.h"
 #include "gameData.h"
 
 class hud
@@ -17,12 +18,14 @@ public:
 	hud(const hud&) = delete;
 	hud& operator=(const hud&) = delete;
 private:
-	int r;
-	int g;
-	int b; 
-	int a;
+	unsigned char r;
+	unsigned char g;
+	unsigned char b; 
+	unsigned char a;
 	TTF_Font* font;
 	int init;
+	SDL_Renderer* rend;
+	Clock& clock;
 };
 
 #endif

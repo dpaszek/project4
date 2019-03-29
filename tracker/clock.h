@@ -1,3 +1,5 @@
+#ifndef CLOCK_H
+#define CLOCK_H
 #include <SDL.h>
 #include <string>
 
@@ -12,6 +14,7 @@ public:
   Clock&operator=(const Clock&) = delete;
 private:
   friend class Engine;
+  friend class hud;
 
   bool started;
   bool paused;
@@ -44,3 +47,5 @@ private:
 
   Clock();
 };
+
+#endif

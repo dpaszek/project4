@@ -28,12 +28,9 @@ void Viewport::setObjectToTrack(const Drawable *obj) {
 }
 
 void Viewport::draw() const {
-  IoMod::getInstance().
-    writeText("Tracking: "+objectToTrack->getName(), msgPos[0], msgPos[1]);
-  
   //Print Name 
-  SDL_Color blue = {255, 0, 0, 255};
-  IoMod::getInstance().writeText("Drew Paszek", 5, 450, blue);
+  SDL_Color red = {255, 0, 0, 255};
+  IoMod::getInstance().writeText("Drew Paszek", 5, 650, red);
   
 }
 
